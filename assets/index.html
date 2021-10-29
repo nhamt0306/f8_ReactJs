@@ -9,8 +9,9 @@
 </head>
 <body>
     
-
+    <!-- React Element: -->
     <script>
+        //Ex1:
         const h1ElementDOM = document.createElement('h1');
         h1ElementDOM.innerText = "Hello Nhã by DOM";
         h1ElementDOM.className = "DOM"
@@ -27,6 +28,27 @@
         }, 'Hello Nhã by React')
 
         console.log(h1React);
+
+        //Ex2:
+        // - DOM Element:
+        const ulDOM = document.createElement('ul');
+        const liDOM1 = document.createElement('li');
+        liDOM1.innerText = 'Mai Thanh Nhã';
+        const liDOM2 = document.createElement('li');
+        liDOM2.innerText = '19110250 - UTE';
+
+        document.body.appendChild(ulDOM);
+        ulDOM.appendChild(liDOM1);
+        ulDOM.appendChild(liDOM2);
+
+        // - React Element
+        const ulliReact = React.createElement('ul',{}, //vì thẻ ul không có thuộc tính, có thể set là null
+            React.createElement('li', null, 'Mai Thanh Nhã'),
+            React.createElement('li', null, '19110250 - UTE'),
+        )
+
+        console.log(ulliReact);
+
 
     </script>
 </body>
