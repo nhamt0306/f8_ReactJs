@@ -7,12 +7,14 @@
     <title>React F8</title>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     
     <div id="root"></div>
     <!-- React Element: -->
-    <script>
+    <script type = "text/babel">
+                                //React Element vs DOM Element
         //Ex1:
         const h1ElementDOM = document.createElement('h1');
         h1ElementDOM.innerText = "Hello Nhã by DOM";
@@ -20,7 +22,7 @@
         h1ElementDOM.style.fontSize = "30px";
         h1ElementDOM.style.fontWeight = '700';
 
-        document.body.appendChild(h1ElementDOM);
+        //document.body.appendChild(h1ElementDOM);
 
 
         const h1React = React.createElement('h1', {
@@ -39,7 +41,7 @@
         const liDOM2 = document.createElement('li');
         liDOM2.innerText = '19110250 - UTE';
 
-        document.body.appendChild(ulDOM);
+        //document.body.appendChild(ulDOM);
         ulDOM.appendChild(liDOM1);
         ulDOM.appendChild(liDOM2);
 
@@ -63,7 +65,7 @@
         const pDOM = document.createElement('p');
         pDOM.innerText = 'Học React JS từ cơ bản đến nâng cao';
 
-        document.body.appendChild(divDOM);
+        //document.body.appendChild(divDOM);
         divDOM.appendChild(h2DOM);
         divDOM.appendChild(pDOM);
 
@@ -80,12 +82,55 @@
         
 
 
-        //React DOM: là cầu nối giữa React và DOM, giúp có thể render các React element lên web 
+                                    //React DOM: là cầu nối giữa React và DOM, giúp có thể render các React element lên web 
         // Để render UI từ React Element: Get root element -> Render UI
         const rootElement = document.getElementById('root');
-        // render(reactelement, root, callback)
+        // render(reactElement, root, callback)
         ReactDOM.render((h1React, ulliReact, divReact), rootElement )
         
+
+
+
+                                    //JSX: Không phải là HTML, cần có JS. 
+        
+        // Babel dùng để chuyển đổi JSX để tạo thành React Element
+        // Nếu muốn viết JS vào JSX thì dùng dấu {} để chứa code JS
+        // Để dùng babel, ta nhúng thư viện. Đồng thời thẻ script phải thêm type = "text/babel"
+
+        const contentJS = 'Nội dung Java Script';
+        //JSX
+        const jsxTest = <ul>
+                <li className = "jsx">Java Script</li>
+                <li>{contentJS}</li>
+            </ul>
+
+        ReactDOM.render(jsxTest, rootElement);
+        
+
+        const courses = [
+            {
+                name: "HTML, CSS"
+            },
+            {
+                name: "Java Script"
+            },
+            {
+                name: "ReactJS"
+            }
+        ];
+
+        const arrCourses = courses.map(coursee => <li> {coursee.name} </li>);
+        arrCourses.join(" ");
+        const renderArray = <ul>
+                { //Dấu ngoặc để viết code JS
+                    arrCourses
+                }
+            </ul>
+        
+        ReactDOM.render(renderArray, rootElement);
+
     </script>
+
+
 </body>
 </html>
