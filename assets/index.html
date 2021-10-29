@@ -86,7 +86,9 @@
         // Để render UI từ React Element: Get root element -> Render UI
         const rootElement = document.getElementById('root');
         // render(reactElement, root, callback)
-        ReactDOM.render((h1React, ulliReact, divReact), rootElement )
+        // Để render nhiều đối tượng cùng cấp, ta tạo một đối tượng chứa các đối tượng này
+        const renderMoreElementSameLevel = React.createElement(React.Fragment, null, h1React, ulliReact, divReact)
+        //ReactDOM.render(renderMoreElementSameLevel, rootElement )
         
 
 
@@ -104,7 +106,7 @@
                 <li>{contentJS}</li>
             </ul>
 
-        ReactDOM.render(jsxTest, rootElement);
+        //ReactDOM.render(jsxTest, rootElement);
         
 
         const courses = [
@@ -119,15 +121,15 @@
             }
         ];
 
-        const arrCourses = courses.map(coursee => <li> {coursee.name} </li>);
-        arrCourses.join(" ");
         const renderArray = <ul>
                 { //Dấu ngoặc để viết code JS
-                    arrCourses
+                    courses.map ( (course, index) =>
+                        <li key = {index}> {course.name} </li> // tương đương React.createElement('li',null, {course.name}) nên khác với JS thuần
+                    )
                 }
             </ul>
         
-        ReactDOM.render(renderArray, rootElement);
+        //ReactDOM.render(renderArray, rootElement);
 
     </script>
 
