@@ -131,6 +131,32 @@
         
         //ReactDOM.render(renderArray, rootElement);
 
+
+
+
+                                    //REACT ELEMENT TYPES
+        //Funtion:
+        function PostItem() {
+            return (
+                <div class="post-item">
+                    <img className= "post-img" src="https://cdn.fullstack.edu.vn/f8-learning/blog_posts/279/6153f692d366e.jpg" alt="[Phần 1] Tạo dự án ReactJS với Webpack và Babel"/>
+                    <h2 className="post-title">[Phần 1] Tạo dự án ReactJS với Webpack và Babel</h2>
+                    <p className="post-desc">Mình làm video này với mong muốn chia sẻ cho các bạn có thể hình dung ra dự án được tạo bởi “create-react-app” được xây dựng như thế nào. Các bạn có thể xem thêm video hướng dẫn ở đây nhé.</p>
+                    <p className="post-time">một tháng trước</p>
+                </div>    
+            )
+        }
+
+        const app = (
+            <div class="posts-list">
+                <PostItem/>
+                <PostItem/>
+                <PostItem/>
+                <PostItem/>
+            </div>
+        )
+
+        ReactDOM.render(app, rootElement);
     </script>
 
 
