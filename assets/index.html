@@ -49,7 +49,33 @@
 
         console.log(ulliReact);
 
+        //Ex3:
+        // - DOM Element:
+        const divDOM = document.createElement('div');
+        divDOM.className = 'post-item';
 
+        const h2DOM = document.createElement('h2');
+        h2DOM.title = 'Học lập trình tại F8';
+        h2DOM.innerText = 'Học React JS';
+
+        const pDOM = document.createElement('p');
+        pDOM.innerText = 'Học React JS từ cơ bản đến nâng cao';
+
+        document.body.appendChild(divDOM);
+        divDOM.appendChild(h2DOM);
+        divDOM.appendChild(pDOM);
+
+        // - React Element
+        const divReact = React.createElement('div',
+            {
+                className: 'post-item',
+            },
+            React.createElement('h2', { title: 'Học lập trình tại F8'}, 'Học React JS'),
+            React.createElement('p', null, 'Học React JS từ cơ bản đến nâng cao')
+        )
+
+        console.log(divReact);
+            
     </script>
 </body>
 </html>
