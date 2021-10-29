@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>React F8</title>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 </head>
 <body>
     
+    <div id="root"></div>
     <!-- React Element: -->
     <script>
         //Ex1:
@@ -25,7 +27,7 @@
             className: 'React',
             fontSize: '30px',
             fontWeight: '700',
-        }, 'Hello Nhã by React')
+        }, 'Hello Nhã by React - Render by ReactDOM')
 
         console.log(h1React);
 
@@ -43,8 +45,8 @@
 
         // - React Element
         const ulliReact = React.createElement('ul',{}, //vì thẻ ul không có thuộc tính, có thể set là null
-            React.createElement('li', null, 'Mai Thanh Nhã'),
-            React.createElement('li', null, '19110250 - UTE'),
+            React.createElement('li', null, 'Mai Thanh Nhã - Render by ReacDOM'),
+            React.createElement('li', null, '19110250 - UTE - Render by ReacDOM'),
         )
 
         console.log(ulliReact);
@@ -70,12 +72,20 @@
             {
                 className: 'post-item',
             },
-            React.createElement('h2', { title: 'Học lập trình tại F8'}, 'Học React JS'),
-            React.createElement('p', null, 'Học React JS từ cơ bản đến nâng cao')
+            React.createElement('h2', { title: 'Học lập trình tại F8'}, 'Học React JS -  Render by ReactDOM'),
+            React.createElement('p', null, 'Học React JS từ cơ bản đến nâng cao  - Render by ReactDOM')
         )
 
         console.log(divReact);
-            
+        
+
+
+        //React DOM: là cầu nối giữa React và DOM, giúp có thể render các React element lên web 
+        // Để render UI từ React Element: Get root element -> Render UI
+        const rootElement = document.getElementById('root');
+        // render(reactelement, root, callback)
+        ReactDOM.render((h1React, ulliReact, divReact), rootElement )
+        
     </script>
 </body>
 </html>
