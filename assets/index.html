@@ -366,14 +366,18 @@
         ]
         
 
-        function Course(probs) { //3. Nhận các tham số từ (2) và trả về một React Element
+        function Course({course}) { //3. Nhận các tham số từ (2) và trả về một React Element
             return (
                 <div class="course-item">
-                    <img className="course-img" src= {probs.thumbnail_cdn} alt={probs.title} />
-                    <h2 className="course-title">{probs.title}</h2>
-                    <p className="course-desc">{probs.description}</p>
-                    <p className="course-level">{probs.level}</p>
-                    <p className="course-students">{probs.students_count}</p>
+                    <img className="course-img" src= {course.thumbnail_cdn} alt={course.title} />
+                    <h2 className="course-title" 
+                            onClick = {() => alert(course.title)}
+                        >
+                        {course.title}
+                    </h2>
+                    <p className="course-desc">{course.description}</p>
+                    <p className="course-level">{course.level}</p>
+                    <p className="course-students">{course.students_count}</p>
                 </div>
             )
             
@@ -385,12 +389,8 @@
                     {
                         coursesItem.map((course,index) => ( //trả về array các React Element được tạo sau khi funtion Course thực thi xong.
                             <Course   //Gọi funtion Course (3) và truyền vào các tham số bên dưới
+                                course = {course}
                                 key = {index}
-                                title = {course.title}
-                                thumbnail_cdn = {course.thumbnail_cdn}
-                                description = {course.description}
-                                students_count = {course.students_count}
-                                level = {course.level}
                             />
                         ))
                     }
@@ -400,7 +400,13 @@
 
         ReactDOM.render(<App/>, rootElement); // 1. Khi gọi sẽ thực thi funtion App
         
-        //render: title, thumbnail_cdn, description, students_count, level
+                                            //DOM EVENTS
+        /*
+        
+        
+        
+        
+        */
     </script>
 
 
