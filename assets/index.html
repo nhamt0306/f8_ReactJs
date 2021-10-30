@@ -366,15 +366,11 @@
         ]
         
 
-        function Course({course}) { //3. Nhận các tham số từ (2) và trả về một React Element
+        function Course({course, onClick}) { //3. Nhận các tham số từ (2) và trả về một React Element
             return (
                 <div class="course-item">
                     <img className="course-img" src= {course.thumbnail_cdn} alt={course.title} />
-                    <h2 className="course-title" 
-                            onClick = {() => alert(course.title)}
-                        >
-                        {course.title}
-                    </h2>
+                    <h2 className="course-title" onClick= {() => onClick(course)}>{course.title}</h2> 
                     <p className="course-desc">{course.description}</p>
                     <p className="course-level">{course.level}</p>
                     <p className="course-students">{course.students_count}</p>
@@ -384,12 +380,16 @@
         }
 
         function App() { //2. App thực thi và trả về react element để ReactDOM.render
+            const handlerClick = (course) => { // Sự kiện khi ta click vào title
+                alert(course.title)
+            }
             return (
                 <div>Danh sách khóa học
                     {
                         coursesItem.map((course,index) => ( //trả về array các React Element được tạo sau khi funtion Course thực thi xong.
                             <Course   //Gọi funtion Course (3) và truyền vào các tham số bên dưới
                                 course = {course}
+                                onClick = {handlerClick}
                                 key = {index}
                             />
                         ))
@@ -398,17 +398,47 @@
             )
         }
 
-        ReactDOM.render(<App/>, rootElement); // 1. Khi gọi sẽ thực thi funtion App
+        //ReactDOM.render(<App/>, rootElement); // 1. Khi gọi sẽ thực thi funtion App
         
-                                            //DOM EVENTS
+                                            //DOM EVENTS -> Đã thêm vào ở trên
+                                            //QUY ƯỚC VỀ COMPONENT
         /*
         
-        
-        
-        
         */
-    </script>
 
+        function Button({content, href, onClick}) {
+            let Component = 'button' //Component phải viết hoa chữ cái đầu
+            let probs = {}
+            if (href)
+            {
+                Component = 'a'
+                probs.href = href //Có nghĩa là probs = {href = "https://www.facebook.com/"}
+            }
+            if (onClick)
+            {
+                probs.onClick = onClick //Có nghĩa là probs = {onClick = {() => alert(Math.random())}}
+            }
+            // Nếu có cả href và onClick => probs = {href = "https://www.facebook.com/", onClick = {() => alert(Math.random())}}
+            return <Component {...probs}>{content}</Component>
+        }
+
+        function DomButton() {
+            return (
+                <div>
+                    <Button 
+                        content = "Học React JS"
+                        href = "https://www.facebook.com/"
+                        onClick = {() => alert(Math.random())}
+                    />    
+                </div>
+
+            )
+        }
+
+
+        ReactDOM.render(<DomButton/>, rootElement)
+
+    </script>
 
 </body>
 
