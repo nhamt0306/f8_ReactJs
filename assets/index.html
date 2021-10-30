@@ -366,7 +366,7 @@
         ]
         
 
-        function Course(probs) {
+        function Course(probs) { //3. Nhận các tham số từ (2) và trả về một React Element
             return (
                 <div class="course-item">
                     <img className="course-img" src= {probs.thumbnail_cdn} alt={probs.title} />
@@ -379,12 +379,13 @@
             
         }
 
-        function App() {
+        function App() { //2. App thực thi và trả về react element để ReactDOM.render
             return (
-                <ul>Danh sách khóa học
+                <div>Danh sách khóa học
                     {
-                        coursesItem.map(course => (
-                            <Course   //Gọi funtion Course và truyền vào các tham số bên dưới
+                        coursesItem.map((course,index) => ( //trả về array các React Element được tạo sau khi funtion Course thực thi xong.
+                            <Course   //Gọi funtion Course (3) và truyền vào các tham số bên dưới
+                                key = {index}
                                 title = {course.title}
                                 thumbnail_cdn = {course.thumbnail_cdn}
                                 description = {course.description}
@@ -393,11 +394,11 @@
                             />
                         ))
                     }
-                </ul>
+                </div>
             )
         }
 
-        ReactDOM.render(<App/>, rootElement);
+        ReactDOM.render(<App/>, rootElement); // 1. Khi gọi sẽ thực thi funtion App
         
         //render: title, thumbnail_cdn, description, students_count, level
     </script>
